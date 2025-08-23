@@ -1,0 +1,13 @@
+{
+  "todos": [
+    {
+      "id": "8d1e",
+      "description": "Testes em React",
+      "createdAt": "2025-08-22T11:26:54.388Z",
+      "completed": false
+    }
+  ],
+  "description": {
+    "text": "Só um exemplo de descrição ensinando sobre findBy para incentivar você!"
+  }
+}
