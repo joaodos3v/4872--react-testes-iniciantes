@@ -1,6 +1,8 @@
 import { render } from "@testing-library/react";
 import { Header } from "./index";
 
+// NOTA: lembre-se que você pode usar .only (ou fdescribe, ftest),
+//  .skip (ou xtest, xdescribe), e .each.
 describe("Header", () => {
   test("deveria renderizar o componente", () => {
     expect(render(<Header />)).toBeTruthy();
