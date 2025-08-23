@@ -1,0 +1,9 @@
+describe('Nome do Grupo de Testes', () => { ... });
+
+
+it('Descrição do Teste', () => { ... });
+
+test('Descrição do Teste', () => { ... });
+
+
+expect(valor).toBe(valorEsperado);
