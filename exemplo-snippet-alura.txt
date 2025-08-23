@@ -1,0 +1,8 @@
+{
+	"Cria uma estrutura básica para suíte de testes unitários utilizando o que aprendemos no curso": {
+		"scope": "javascript,typescript,javascriptreact,typescriptreact",
+		"prefix": "exemploparavoce",
+		"body": ["describe('$1', () => {", "  test('$2', () => {", "    $3", "  });", "});"],
+		"description": "Cria uma estrutura básica para suíte de testes unitários utilizando o que aprendemos no curso",
+	}
+}
