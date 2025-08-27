@@ -23,7 +23,7 @@ describe("ToDoItem", () => {
     expect(getByRole("checkbox")).not.toBeChecked();
   });
 
-  test("deveria chamar a função selectTodoForEdit quando o botão de editar for clicado o item corretamente", async () => {
+  test("deveria chamar a função selectTodoForEdit quando o botão de editar for clicado", async () => {
     const funcaoSimulandoSelectTodoForEdit = jest.fn();
     const item = {
       description: "Editar Jest",
@@ -41,5 +41,46 @@ describe("ToDoItem", () => {
     await userEvent.click(button);
 
     expect(funcaoSimulandoSelectTodoForEdit).toHaveBeenCalledWith(item);
+  });
+
+  test("deveria chamar a função removeTodo quando o botão de deletar for clicado", async () => {
+    const funcaoSimulandoRemoveTodo = jest.fn();
+    const item = {
+      description: "Excluir Jest",
+      createdAt: "2025-08-26T10:00:00Z",
+      completed: false,
+    };
+
+    const { getByRole } = render(
+      <TodoContext.Provider value={{ removeTodo: funcaoSimulandoRemoveTodo }}>
+        <ToDoItem item={item} />
+      </TodoContext.Provider>,
+    );
+
+    const button = getByRole("button", { name: /delete/i });
+    await userEvent.click(button);
+
+    expect(funcaoSimulandoRemoveTodo).toHaveBeenCalledWith(item);
+  });
+
+  test("[data-testid] deveria chamar a função removeTodo quando o botão de deletar for clicado", async () => {
+    const funcaoSimulandoRemoveTodo = jest.fn();
+    const item = {
+      description: "Excluir Jest",
+      createdAt: "2025-08-26T10:00:00Z",
+      completed: false,
+    };
+
+    const { getByTestId } = render(
+      <TodoContext.Provider value={{ removeTodo: funcaoSimulandoRemoveTodo }}>
+        <ToDoItem item={item} />
+      </TodoContext.Provider>,
+    );
+
+    // const button = getByRole("button", { name: /delete/i });
+    const button = getByTestId("btn-delete");
+    await userEvent.click(button);
+
+    expect(funcaoSimulandoRemoveTodo).toHaveBeenCalledWith(item);
   });
 });
