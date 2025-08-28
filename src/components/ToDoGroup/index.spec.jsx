@@ -4,6 +4,25 @@ import TodoGroup from ".";
 import { TodoContext } from "../TodoProvider/TodoContext";
 
 describe("ToDoGroup", () => {
+  test("deveria renderizar a mensagem de carregando quando o isLoading for true", () => {
+    const { getByText, queryAllByRole } = render(
+      <TodoGroup isLoading={true} todos={[]} heading="Teste" />,
+    );
+
+    expect(getByText("Carregando...")).toBeInTheDocument();
+    expect(queryAllByRole("listitem")).toHaveLength(0);
+  });
+
+  test("deveria renderizar a mensagem de lista vazia quando não tiver itens", () => {
+    const { getByText, queryByText, queryAllByRole } = render(
+      <TodoGroup isLoading={false} todos={[]} heading="Teste" />,
+    );
+
+    expect(getByText("Nenhum item encontrado")).toBeInTheDocument();
+    expect(queryByText("Carregando...")).toBeNull();
+    expect(queryAllByRole("listitem")).toHaveLength(0);
+  });
+
   test("deveria renderizar o componente corretamente", () => {
     const { getByText, queryAllByRole } = render(<TodoGroup todos={[]} heading="Teste" />);
 
