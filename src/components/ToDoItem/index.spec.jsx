@@ -12,11 +12,13 @@ describe("ToDoItem", () => {
       completed: false,
     };
 
-    const { getByText, getByRole } = render(
+    const { getByText, getByRole, debug } = render(
       <TodoContext.Provider value={{}}>
         <ToDoItem item={item} />
       </TodoContext.Provider>,
     );
+
+    debug();
 
     expect(getByText("Aprender Jest")).toBeInTheDocument();
     expect(getByText("26/08/2025")).toBeInTheDocument();
